@@ -14,6 +14,7 @@ public class Card : MonoBehaviour
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(FlipCard);
+        HideCard();
     }
 
     public void SetCard(int id, Sprite frontImage)
@@ -31,6 +32,7 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
+        // Inform GameManager about the card flip
         FindObjectOfType<GameManager>().CardRevealed(this);
     }
 
@@ -41,8 +43,8 @@ public class Card : MonoBehaviour
         back.SetActive(true);
     }
 
-    public void Disable()
+    public void DisableCard()
     {
-        button.interactable = false;
+        GetComponent<Button>().interactable = false;
     }
 }
